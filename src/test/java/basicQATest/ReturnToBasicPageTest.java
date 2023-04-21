@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
 
-public class ReturnToBasicPage {
+public class ReturnToBasicPageTest {
 
     private WebDriver driver;
 

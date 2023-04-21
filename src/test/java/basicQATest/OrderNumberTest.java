@@ -14,12 +14,12 @@ import org.junit.runners.Parameterized;
 import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
 
 @RunWith(Parameterized.class)
-public class OrderNumber {
+public class OrderNumberTest {
 
     private WebDriver driver;
     private final String orderNumber;
 
-    public OrderNumber(String orderNumber) {
+    public OrderNumberTest(String orderNumber) {
         this.orderNumber = orderNumber;
     }
 

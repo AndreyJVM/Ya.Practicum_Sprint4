@@ -12,13 +12,13 @@ import org.junit.runners.Parameterized;
 import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
 
 @RunWith(Parameterized.class)
-public class FAQ {
+public class FAQTest {
     private WebDriver driver;
 
     private final String question;
     private final String answer;
 
-    public FAQ(String question, String answer) {
+    public FAQTest(String question, String answer) {
         this.question = question;
         this.answer = answer;
     }

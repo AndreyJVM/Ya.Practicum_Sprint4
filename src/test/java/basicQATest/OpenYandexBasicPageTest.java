@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
 
-public class OpenYandexBasicPage {
+public class OpenYandexBasicPageTest {
 
     private WebDriver driver;
 

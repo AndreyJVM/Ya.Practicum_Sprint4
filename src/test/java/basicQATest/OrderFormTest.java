@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
 
 @RunWith(Parameterized.class)
-public class OrderForm {
+public class OrderFormTest {
 
     private WebDriver driver;
 
@@ -22,7 +22,7 @@ public class OrderForm {
     private final String phoneNumber;
     private final String errorText;
 
-    public OrderForm
+    public OrderFormTest
             (String name, String lastName, String address, String metro, String phoneNumber, String errorText) {
         this.name = name;
         this.lastName = lastName;

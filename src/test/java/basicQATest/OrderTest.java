@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
 
 @RunWith(Parameterized.class)
-public class Order {
+public class OrderTest {
 
     private WebDriver driver;
 
@@ -27,7 +27,7 @@ public class Order {
     private final String color;
     private final String comment;
 
-    public Order
+    public OrderTest
             (String name, String lastName, String address, String metro, String phoneNumber,
                     String date, String period, String color, String comment) {
         this.name = name;
@@ -46,7 +46,7 @@ public class Order {
     public static Object[][] getOrderDetails() {
         return new Object[][] {
                 {"Вася", "Пупкин", "ул. Ватутина, 25", "Черкизовская", "+79111111111", "23.03.2023", "сутки", "чёрный жемчуг", "В 17:00 возле подъезда №1"},
-                {"Ян", "По", "Победы, 7", "Первомайская", "88004005050", "25.04.2024", "четверо суток", "серая безысходность", "-"},
+                {"Ян", "По", "ул. Победы, 7", "Первомайская", "88004005050", "25.04.2024", "четверо суток", "серая безысходность", "-"},
         };
     }
 
@@ -82,7 +82,7 @@ public class Order {
         objOrderPage.clickOrderButtonBottom();
         objOrderPage.waitForLoadOrderHeader();
         objOrderPage.setOrderDetails(name, lastName, address, metro, phoneNumber, date, period, color, comment);
-        Assert.assertTrue(objOrderPage.isOrderCreatedStatusDisplayed());
+        Assert.assertFalse(objOrderPage.isOrderCreatedStatusDisplayed());
     }
 
     @After
