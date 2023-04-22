@@ -16,6 +16,8 @@ import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
 public class OrderTest {
 
     private WebDriver driver;
+    private BasicPageTest objBasicPage;
+    private  OrderPageTest objOrderPage;
 
     private final String name;
     private final String lastName;
@@ -52,19 +54,19 @@ public class OrderTest {
 
     @Before
     public void startUp() {
+        objBasicPage = new BasicPageTest(driver);
+        objOrderPage = new OrderPageTest(driver);
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get(PAGE_URL);
+        objBasicPage.waitForLoadServiceLogo();
+        objBasicPage.clickCookieButton();
+
     }
 
     @Test
     public void checkSuccessfulOrder_topButton() {
 
-        BasicPageTest objBasicPage = new BasicPageTest(driver);
-        objBasicPage.waitForLoadServiceLogo();
-        objBasicPage.clickCookieButton();
-
-        OrderPageTest objOrderPage = new OrderPageTest(driver);
         objOrderPage.clickOrderButtonTop();
         objOrderPage.waitForLoadOrderHeader();
         objOrderPage.setOrderDetails(name, lastName, address, metro, phoneNumber, date, period, color, comment);
@@ -73,11 +75,7 @@ public class OrderTest {
 
     @Test
     public void checkSuccessfulOrder_lowerButton() {
-        BasicPageTest objBasicPage = new BasicPageTest(driver);
-        objBasicPage.waitForLoadServiceLogo();
-        objBasicPage.clickCookieButton();
 
-        OrderPageTest objOrderPage = new OrderPageTest(driver);
         objOrderPage.scrollToOrderButtonBottom();
         objOrderPage.clickOrderButtonBottom();
         objOrderPage.waitForLoadOrderHeader();
