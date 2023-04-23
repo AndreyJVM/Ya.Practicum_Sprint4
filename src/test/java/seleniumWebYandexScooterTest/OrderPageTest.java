@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class OrderPageTest {
 
     //Кнопка "Заказать" в верхней части страницы
-    private static final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g");
+    public static final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g");
     //Текст "Для кого самокат" на странице с формой заказа
     private static final By ORDER_HEADER = By.className("Order_Header__BZXOb");
     //Поле "Имя"
@@ -36,7 +36,7 @@ public class OrderPageTest {
     //Текст в модалке "Заказ оформлен"
     private static final By ORDER_CREATED_STATUS = By.xpath(".//div[@class='Order_Modal__YZ-d3']//*[text()='Заказ оформлен']");
     //Кнопка "Заказать" в нижней части страницы
-    private static final By ORDER_BUTTON_BOTTOM = By.xpath(".//div[5]/button");
+    public static final By ORDER_BUTTON_BOTTOM = By.xpath(".//div[5]/button");
 
 
     private WebDriver driver;
@@ -49,6 +49,12 @@ public class OrderPageTest {
         Assert.assertTrue(driver.findElement(ORDER_BUTTON_TOP).isEnabled());
         driver.findElement(ORDER_BUTTON_TOP).click();
     }
+
+    public void clickOrderButton(By xpathButton) {
+        Assert.assertTrue(driver.findElement(xpathButton).isEnabled());
+        driver.findElement(xpathButton).click();
+    }
+
 
     public void waitForLoadOrderHeader() {
         new WebDriverWait(driver, 10)
@@ -67,7 +73,9 @@ public class OrderPageTest {
 
     public void setOrderDetails
             (String name, String lastName, String address, String metro, String phoneNumber,
-             String date, String period, String color, String comment) {
+             String date, String period, String color, String comment, By xpathOrderButton) {
+        clickOrderButton(xpathOrderButton);
+        waitForLoadOrderHeader();
         driver.findElement(INPUT_NAME).sendKeys(name);
         driver.findElement(INPUT_LAST_NAME).sendKeys(lastName);
         driver.findElement(INPUT_ADDRESS).sendKeys(address);
@@ -105,16 +113,6 @@ public class OrderPageTest {
                 new WebDriverWait(driver, 10)
                         .until(ExpectedConditions.visibilityOfElementLocated(ORDER_CREATED_STATUS));
         return initialStatus.isDisplayed();
-    }
-
-    public void scrollToOrderButtonBottom() {
-        WebElement element = driver.findElement(ORDER_BUTTON_BOTTOM);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-    }
-
-    public void clickOrderButtonBottom() {
-        Assert.assertTrue(driver.findElement(ORDER_BUTTON_BOTTOM).isEnabled());
-        driver.findElement(ORDER_BUTTON_BOTTOM).click();
     }
 
 public void fillOutPersonalData(String name, String lastName, String address, String metro, String phoneNumber) {
