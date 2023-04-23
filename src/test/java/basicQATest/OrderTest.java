@@ -48,25 +48,23 @@ public class OrderTest {
     public static Object[][] getOrderDetails() {
         return new Object[][] {
                 {"Вася", "Пупкин", "ул. Ватутина, 25", "Черкизовская", "+79111111111", "23.03.2023", "сутки", "чёрный жемчуг", "В 17:00 возле подъезда №1"},
-                {"Ян", "По", "ул. Победы, 7", "Первомайская", "88004005050", "25.04.2024", "четверо суток", "серая безысходность", "-"},
+                {"Ян", "По", "ул. Победы, 7", "Красные Ворота", "88004005050", "25.04.2024", "четверо суток", "серая безысходность", "-"},
         };
     }
 
     @Before
     public void startUp() {
-        objBasicPage = new BasicPageTest(driver);
-        objOrderPage = new OrderPageTest(driver);
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get(PAGE_URL);
+        objBasicPage = new BasicPageTest(driver);
+        objOrderPage = new OrderPageTest(driver);
         objBasicPage.waitForLoadServiceLogo();
         objBasicPage.clickCookieButton();
-
     }
 
     @Test
     public void checkSuccessfulOrder_topButton() {
-
         objOrderPage.clickOrderButtonTop();
         objOrderPage.waitForLoadOrderHeader();
         objOrderPage.setOrderDetails(name, lastName, address, metro, phoneNumber, date, period, color, comment);
@@ -75,7 +73,6 @@ public class OrderTest {
 
     @Test
     public void checkSuccessfulOrder_lowerButton() {
-
         objOrderPage.scrollToOrderButtonBottom();
         objOrderPage.clickOrderButtonBottom();
         objOrderPage.waitForLoadOrderHeader();
