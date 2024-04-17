@@ -1,4 +1,4 @@
-package seleniumWebYandexScooterTest;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -6,12 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.Locale;
 import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-public class BasicPageTest {
+public class BasicPage {
 
-    public static final String PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
+    public static final String PAGE_URL = System.getProperty("baseURL").toLowerCase(Locale.ROOT);
 
     //Логотип сервиса "Самокат"
     private static final By SERVICE_LOGO = By.className("Header_LogoScooter__3lsAR");
@@ -32,11 +33,9 @@ public class BasicPageTest {
     //Изображение "Такого заказа нет"
     private static final By NOT_FOUND_IMAGE = By.cssSelector("div.Track_NotFound__6oaoY > img");
 
-
-
     private WebDriver driver;
 
-    public BasicPageTest(WebDriver driver) {
+    public BasicPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -116,5 +115,4 @@ public class BasicPageTest {
                         until(ExpectedConditions.visibilityOfElementLocated(NOT_FOUND_IMAGE));
         return notFoundImage.isDisplayed();
     }
-
 }

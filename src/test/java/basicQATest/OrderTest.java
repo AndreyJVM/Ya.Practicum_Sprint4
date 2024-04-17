@@ -1,6 +1,7 @@
 package basicQATest;
 import org.openqa.selenium.By;
-import seleniumWebYandexScooterTest.*;
+import pages.BasicPage;
+import pages.OrderPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,16 +12,16 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
-import static seleniumWebYandexScooterTest.OrderPageTest.ORDER_BUTTON_BOTTOM;
-import static seleniumWebYandexScooterTest.OrderPageTest.ORDER_BUTTON_TOP;
+import static pages.BasicPage.PAGE_URL;
+import static pages.OrderPage.ORDER_BUTTON_BOTTOM;
+import static pages.OrderPage.ORDER_BUTTON_TOP;
 
 @RunWith(Parameterized.class)
 public class OrderTest {
 
     private WebDriver driver;
-    private BasicPageTest objBasicPage;
-    private OrderPageTest objOrderPage;
+    private BasicPage objBasicPage;
+    private OrderPage objOrderPage;
 
     private final String name;
     private final String lastName;
@@ -62,8 +63,8 @@ public class OrderTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get(PAGE_URL);
-        objBasicPage = new BasicPageTest(driver);
-        objOrderPage = new OrderPageTest(driver);
+        objBasicPage = new BasicPage(driver);
+        objOrderPage = new OrderPage(driver);
         objBasicPage.waitForLoadServiceLogo();
         objBasicPage.clickCookieButton();
     }

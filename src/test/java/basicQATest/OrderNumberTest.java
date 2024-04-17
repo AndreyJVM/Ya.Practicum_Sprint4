@@ -1,7 +1,7 @@
 package basicQATest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import seleniumWebYandexScooterTest.BasicPageTest;
+import pages.BasicPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
+import static pages.BasicPage.PAGE_URL;
 
 @RunWith(Parameterized.class)
 public class OrderNumberTest {
@@ -40,7 +40,7 @@ public class OrderNumberTest {
 
     @Test
     public void checkNonexistentNumber_showsError() {
-        BasicPageTest objBasicPage = new BasicPageTest(driver);
+        BasicPage objBasicPage = new BasicPage(driver);
         objBasicPage.waitForLoadServiceLogo();
         objBasicPage.clickOrderStatusButton();
         objBasicPage.waitForLoadOrderNumberInput();

@@ -1,5 +1,5 @@
 package basicQATest;
-import seleniumWebYandexScooterTest.BasicPageTest;
+import pages.BasicPage;
 import org.junit.After;
 import org.junit.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
+import static pages.BasicPage.PAGE_URL;
 
 @RunWith(Parameterized.class)
 public class FAQTest {
@@ -54,7 +54,7 @@ public class FAQTest {
 
     @Test
     public void checkQuestionShowsRightAnswer() {
-        BasicPageTest objBasicPage = new BasicPageTest(driver);
+        BasicPage objBasicPage = new BasicPage(driver);
         objBasicPage.waitForLoadServiceLogo();
         objBasicPage.clickCookieButton();
         objBasicPage.scrollToQuestionsList();

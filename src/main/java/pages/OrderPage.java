@@ -1,11 +1,11 @@
-package seleniumWebYandexScooterTest;
+package pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class OrderPageTest {
+public class OrderPage {
 
     //Кнопка "Заказать" в верхней части страницы
     public static final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g");
@@ -41,7 +41,7 @@ public class OrderPageTest {
 
     private WebDriver driver;
 
-    public OrderPageTest(WebDriver driver) {
+    public OrderPage(WebDriver driver) {
         this.driver = driver;
     }
 

@@ -1,5 +1,5 @@
 package basicQATest;
-import seleniumWebYandexScooterTest.BasicPageTest;
+import pages.BasicPage;
 import org.junit.After;
 import org.junit.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -8,9 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.Assert.assertEquals;
 
-import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
+import static pages.BasicPage.PAGE_URL;
 
-public class OpenYandexBasicPageTest {
+public class OpenYandexBasicPage {
 
     private WebDriver driver;
 
@@ -25,7 +25,7 @@ public class OpenYandexBasicPageTest {
 
     @Test
     public void checkClickYandexLogo_OpensYandexMainPage() {
-        BasicPageTest objBasicPage = new BasicPageTest(driver);
+        BasicPage objBasicPage = new BasicPage(driver);
         objBasicPage.waitForLoadServiceLogo();
         objBasicPage.clickYandexLogo();
 

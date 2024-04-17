@@ -1,6 +1,7 @@
 package basicQATest;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import seleniumWebYandexScooterTest.*;
+import pages.BasicPage;
+import pages.OrderPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
+import static pages.BasicPage.PAGE_URL;
 
 @RunWith(Parameterized.class)
 public class OrderFormTest {
@@ -51,11 +52,11 @@ public class OrderFormTest {
 
     @Test
     public void checkEmptyField_ShowsError() {
-        BasicPageTest objBasicPage = new BasicPageTest(driver);
+        BasicPage objBasicPage = new BasicPage(driver);
         objBasicPage.waitForLoadServiceLogo();
         objBasicPage.clickCookieButton();
 
-        OrderPageTest objOrderPage = new OrderPageTest(driver);
+        OrderPage objOrderPage = new OrderPage(driver);
         objOrderPage.clickOrderButtonTop();
         objOrderPage.waitForLoadOrderHeader();
         objOrderPage.fillOutPersonalData(name, lastName, address, metro, phoneNumber);

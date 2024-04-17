@@ -1,5 +1,6 @@
 package basicQATest;
-import seleniumWebYandexScooterTest.*;
+import pages.BasicPage;
+import pages.OrderPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,9 +9,9 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static seleniumWebYandexScooterTest.BasicPageTest.PAGE_URL;
+import static pages.BasicPage.PAGE_URL;
 
-public class ReturnToBasicPageTest {
+public class ReturnToBasicPage {
 
     private WebDriver driver;
 
@@ -23,8 +24,8 @@ public class ReturnToBasicPageTest {
 
     @Test
     public void checkClickOnLogoReturnsToMainPage() {
-        BasicPageTest objBasicPage = new BasicPageTest(driver);
-        OrderPageTest objOrderPage = new OrderPageTest(driver);
+        BasicPage objBasicPage = new BasicPage(driver);
+        OrderPage objOrderPage = new OrderPage(driver);
 
         objBasicPage.waitForLoadServiceLogo();
         objOrderPage.clickOrderButtonTop();
