@@ -12,7 +12,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class BasicPage {
 
-    public static final String PAGE_URL = System.getProperty("baseURL").toLowerCase(Locale.ROOT);
+    public static final String BASE_URI = System.getProperty("webdriver.base.url").toLowerCase(Locale.ROOT);
 
     //Логотип сервиса "Самокат"
     private static final By SERVICE_LOGO = By.className("Header_LogoScooter__3lsAR");

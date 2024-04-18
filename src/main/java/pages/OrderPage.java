@@ -115,14 +115,14 @@ public class OrderPage {
         return initialStatus.isDisplayed();
     }
 
-public void fillOutPersonalData(String name, String lastName, String address, String metro, String phoneNumber) {
-    driver.findElement(INPUT_NAME).sendKeys(name);
-    driver.findElement(INPUT_LAST_NAME).sendKeys(lastName);
-    driver.findElement(INPUT_ADDRESS).sendKeys(address);
-    selectMetro(metro);
-    driver.findElement(INPUT_PHONE_NUMBER).sendKeys(phoneNumber);
-    driver.findElement(NEXT_BUTTON).click();
-}
+    public void fillOutPersonalData(String name, String lastName, String address, String metro, String phoneNumber) {
+        driver.findElement(INPUT_NAME).sendKeys(name);
+        driver.findElement(INPUT_LAST_NAME).sendKeys(lastName);
+        driver.findElement(INPUT_ADDRESS).sendKeys(address);
+        selectMetro(metro);
+        driver.findElement(INPUT_PHONE_NUMBER).sendKeys(phoneNumber);
+        driver.findElement(NEXT_BUTTON).click();
+    }
 
     public boolean isErrorTextDisplayed(String error) {
         String personalDataForm = String.format(".//div[@class='Order_Form__17u6u']//*[text()='%s']", error);
