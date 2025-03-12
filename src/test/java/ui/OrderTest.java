@@ -1,8 +1,6 @@
-package basicQATest;
+package ui;
 
 import org.openqa.selenium.By;
-import pages.BasicPage;
-import pages.OrderPage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -14,8 +12,6 @@ import static pages.OrderPage.ORDER_BUTTON_TOP;
 @RunWith(Parameterized.class)
 public class OrderTest extends BaseTest {
 
-    private BasicPage basicPage;
-    private OrderPage objOrderPage;
     private final String name;
     private final String lastName;
     private final String address;
@@ -25,15 +21,6 @@ public class OrderTest extends BaseTest {
     private final String period;
     private final String color;
     private final String comment;
-
-    @Override
-    public void startUp() {
-        super.startUp();
-        basicPage = new BasicPage(driver);
-        objOrderPage = new OrderPage(driver);
-        basicPage.waitForLoadServiceLogo();
-        basicPage.clickCookieButton();
-    }
 
     private final By xpathOrderButton;
 
@@ -52,17 +39,22 @@ public class OrderTest extends BaseTest {
         this.xpathOrderButton = xpathOrderButton;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "name: {0}; lastName: {1}; address: {2}; metro: {3}; phoneNumber: {4}; date: {5}; period: {6}; color: {7}; comment: {8}; xpathOrderButton: {9}")
     public static Object[][] getOrderDetails() {
         return new Object[][]{
                 {"Вася", "Пупкин", "ул. Ватутина, 25", "Черкизовская", "+79111111111", "23.03.2023", "сутки", "чёрный жемчуг", "В 17:00 возле подъезда №1", ORDER_BUTTON_BOTTOM},
+                {"Вася", "Пупкин", "ул. Ватутина, 25", "Черкизовская", "+79111111111", "23.03.2023", "сутки", "чёрный жемчуг", "В 17:00 возле подъезда №1", ORDER_BUTTON_TOP},
+                {"Ян", "По", "ул. Победы, 7", "Красные Ворота", "88004005050", "25.04.2024", "четверо суток", "серая безысходность", "-", ORDER_BUTTON_BOTTOM},
                 {"Ян", "По", "ул. Победы, 7", "Красные Ворота", "88004005050", "25.04.2024", "четверо суток", "серая безысходность", "-", ORDER_BUTTON_TOP},
         };
     }
 
     @Test
     public void checkSuccessfulOrderTopButtonAndBottom() {
-        objOrderPage.setOrderDetails(name, lastName, address, metro, phoneNumber, date, period, color, comment, xpathOrderButton);
-        assertTrue(objOrderPage.isOrderCreatedStatusDisplayed());
+        basicPage.waitForLoadServiceLogo();
+        basicPage.clickCookieButton();
+        orderPage.setOrderDetails(name, lastName, address, metro, phoneNumber, date, period, color, comment, xpathOrderButton);
+        assertTrue(orderPage.isOrderCreatedStatusDisplayed());
     }
+
 }

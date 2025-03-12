@@ -80,7 +80,7 @@ public class BasicPage {
 
         wait.until(numberOfWindowsToBe(2));
         switchToNewWindow(driver.getWindowHandle());
-        
+
         wait.until(ExpectedConditions.jsReturnsValue("return document.readyState == 'complete'"));
     }
 

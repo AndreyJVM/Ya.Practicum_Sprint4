@@ -1,6 +1,5 @@
-package basicQATest;
+package ui;
 
-import pages.BasicPage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -10,17 +9,10 @@ public class FAQTest extends BaseTest {
 
     private final String question;
     private final String answer;
-    private BasicPage basicPage;
 
     public FAQTest(String question, String answer) {
         this.question = question;
         this.answer = answer;
-    }
-
-    @Override
-    public void startUp() {
-        super.startUp();
-        basicPage = new BasicPage(driver);
     }
 
     @Parameterized.Parameters(name = "question: {0}; answer: {1}")

@@ -73,9 +73,8 @@ public class OrderPage {
         driver.findElement(By.xpath(metroOptionTemplate)).click();
     }
 
-    public void setOrderDetails
-            (String name, String lastName, String address, String metro, String phoneNumber,
-             String date, String period, String color, String comment, By xpathOrderButton) {
+    public void setOrderDetails(String name, String lastName, String address, String metro, String phoneNumber,
+                                String date, String period, String color, String comment, By xpathOrderButton) {
         clickOrderButton(xpathOrderButton);
         waitForLoadOrderHeader();
         driver.findElement(INPUT_NAME).sendKeys(name);
@@ -90,7 +89,6 @@ public class OrderPage {
         selectColor(color);
         driver.findElement(COMMENT).sendKeys(comment);
         driver.findElement(ORDER_BUTTON_UNDER_FOR_WHOM_FORM).click();
-        driver.findElement(YES_BUTTON).click();
     }
 
     public void waitForChangedHeader() {
@@ -110,8 +108,7 @@ public class OrderPage {
     }
 
     public boolean isOrderCreatedStatusDisplayed() {
-        WebElement initialStatus = wait.until(ExpectedConditions.visibilityOfElementLocated(ORDER_CREATED_STATUS));
-        return initialStatus.isDisplayed();
+        return driver.findElement(YES_BUTTON).isDisplayed();
     }
 
     public void fillOutPersonalData(String name, String lastName, String address, String metro, String phoneNumber) {
