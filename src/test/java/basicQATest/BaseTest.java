@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static pages.BasicPage.BASE_URI;
 
-public class Base_Test {
+public class BaseTest {
 
     public WebDriver driver;
 

@@ -6,12 +6,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class FAQ_Test extends Base_Test{
+public class FAQTest extends BaseTest {
 
     private final String question;
     private final String answer;
 
-    public FAQ_Test(String question, String answer) {
+    public FAQTest(String question, String answer) {
         this.question = question;
         this.answer = answer;
     }

@@ -3,22 +3,16 @@ package basicQATest;
 import org.openqa.selenium.By;
 import pages.BasicPage;
 import pages.OrderPage;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import static pages.BasicPage.BASE_URI;
 import static pages.OrderPage.ORDER_BUTTON_BOTTOM;
 import static pages.OrderPage.ORDER_BUTTON_TOP;
 
 @RunWith(Parameterized.class)
-public class Order_Test extends Base_Test{
+public class OrderTest extends BaseTest {
 
     @Override
     public void startUp() {
@@ -44,7 +38,7 @@ public class Order_Test extends Base_Test{
 
     private final By xpathOrderButton;
 
-    public Order_Test
+    public OrderTest
             (String name, String lastName, String address, String metro, String phoneNumber,
              String date, String period, String color, String comment, By xpathOrderButton) {
         this.name = name;

@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static pages.BasicPage.BASE_URI;
 
-public class ReturnToBasic_Page {
+public class ReturnToBasicPageTest {
 
     private WebDriver driver;
 

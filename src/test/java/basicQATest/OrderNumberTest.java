@@ -1,24 +1,17 @@
 package basicQATest;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.BasicPage;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import static pages.BasicPage.BASE_URI;
-
 @RunWith(Parameterized.class)
-public class OrderNumber_Test extends Base_Test{
+public class OrderNumberTest extends BaseTest {
 
     private final String orderNumber;
 
-    public OrderNumber_Test(String orderNumber) {
+    public OrderNumberTest(String orderNumber) {
         this.orderNumber = orderNumber;
     }
 

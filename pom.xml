@@ -13,6 +13,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <!--Dependencies-->
         <junit.version>4.13.2</junit.version>
         <selenium.version>3.141.59</selenium.version>
         <webdriver.version>4.4.3</webdriver.version>

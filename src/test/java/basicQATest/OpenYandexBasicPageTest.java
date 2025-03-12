@@ -4,7 +4,7 @@ import pages.BasicPage;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class OpenYandexBasic_Page extends Base_Test{
+public class OpenYandexBasicPageTest extends BaseTest {
 
     private final String YANDEX_URL = "https://dzen.ru/?yredirect=true";
 

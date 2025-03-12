@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class OrderForm_Test extends Base_Test{
+public class OrderFormTest extends BaseTest {
 
     private final String name;
     private final String lastName;
@@ -16,7 +16,7 @@ public class OrderForm_Test extends Base_Test{
     private final String phoneNumber;
     private final String errorText;
 
-    public OrderForm_Test
+    public OrderFormTest
             (String name, String lastName, String address, String metro, String phoneNumber, String errorText) {
         this.name = name;
         this.lastName = lastName;
