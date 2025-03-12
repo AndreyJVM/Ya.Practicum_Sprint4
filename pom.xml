@@ -20,6 +20,7 @@
         <!--System Properties-->
         <base.url/>
         <webdriver.base.url>https://qa-scooter.praktikum-services.ru/</webdriver.base.url>
+        <ya.base.url>https://dzen.ru/?yredirect=true</ya.base.url>
         <browser>chrome</browser>
 
         <!--Plugins-->

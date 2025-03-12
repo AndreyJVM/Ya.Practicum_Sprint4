@@ -2,6 +2,7 @@ package basicQATest;
 
 import pages.BasicPage;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class OpenYandexBasicPageTest extends BaseTest {
@@ -12,9 +13,10 @@ public class OpenYandexBasicPageTest extends BaseTest {
     public void checkClickYandexLogo_OpensYandexMainPage() {
         BasicPage basicPage = new BasicPage(driver);
         basicPage.waitForLoadServiceLogo();
-        basicPage.clickYandexLogo();
 
+        basicPage.clickYandexLogo();
         String currentUrl = driver.getCurrentUrl();
+
         assertEquals(YANDEX_URL, currentUrl);
     }
 }

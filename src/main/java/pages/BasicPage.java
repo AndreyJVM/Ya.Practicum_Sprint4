@@ -6,12 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.Locale;
-import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class BasicPage {
 
+    private WebDriver driver;
+    private WebDriverWait wait;
     public static final String BASE_URI = System.getProperty("webdriver.base.url").toLowerCase(Locale.ROOT);
 
     //Логотип сервиса "Самокат"
@@ -33,15 +36,13 @@ public class BasicPage {
     //Изображение "Такого заказа нет"
     private static final By NOT_FOUND_IMAGE = By.cssSelector("div.Track_NotFound__6oaoY > img");
 
-    private WebDriver driver;
-
     public BasicPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, 10);
     }
 
     public void waitForLoadServiceLogo() {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(SERVICE_LOGO));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SERVICE_LOGO));
     }
 
     public void clickCookieButton() {
@@ -61,8 +62,7 @@ public class BasicPage {
     public void verifyAnswer(String answer) {
         String answersList = String.format(".//div[@class='accordion']//*[text()='%s']", answer);
         String answerText = driver.findElement(By.xpath(answersList)).getText();
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(answersList), answerText));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(answersList), answerText));
     }
 
     public void clickServiceLogo() {
@@ -70,26 +70,18 @@ public class BasicPage {
     }
 
     public boolean isHomeHeaderDisplayed() {
-        WebElement homeHeader =
-                new WebDriverWait(driver, 10)
-                        .until(ExpectedConditions.visibilityOfElementLocated(HOME_HEADER));
+        WebElement homeHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(HOME_HEADER));
         return homeHeader.isDisplayed();
 
     }
 
     public void clickYandexLogo() {
-        String mainPage = driver.getWindowHandle();
-        assert driver.getWindowHandles().size() == 1;
         driver.findElement(YANDEX_LOGO).click();
-        new WebDriverWait(driver, 10).until(numberOfWindowsToBe(2));
 
-        for (String windowHandle : driver.getWindowHandles()) {
-            if(!mainPage.contentEquals(windowHandle)) {
-                driver.switchTo().window(windowHandle);
-                break;
-            }
-        }
-        new WebDriverWait(driver, 10).until(titleIs("Дзен"));
+        wait.until(numberOfWindowsToBe(2));
+        switchToNewWindow(driver.getWindowHandle());
+        
+        wait.until(ExpectedConditions.jsReturnsValue("return document.readyState == 'complete'"));
     }
 
     public void clickOrderStatusButton() {
@@ -97,8 +89,7 @@ public class BasicPage {
     }
 
     public void waitForLoadOrderNumberInput() {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(INPUT_ORDER_NUMBER));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(INPUT_ORDER_NUMBER));
     }
 
     public void enterOrderNumber(String orderNumber) {
@@ -110,9 +101,17 @@ public class BasicPage {
     }
 
     public boolean isImageNotFoundDisplayed() {
-        WebElement notFoundImage =
-                new WebDriverWait(driver, 10).
-                        until(ExpectedConditions.visibilityOfElementLocated(NOT_FOUND_IMAGE));
+        WebElement notFoundImage = wait.until(ExpectedConditions.visibilityOfElementLocated(NOT_FOUND_IMAGE));
         return notFoundImage.isDisplayed();
+    }
+
+    private String switchToNewWindow(String mainWindow) {
+        for (String handle : driver.getWindowHandles()) {
+            if (!handle.equals(mainWindow)) {
+                driver.switchTo().window(handle);
+                return handle;
+            }
+        }
+        throw new IllegalStateException("Новое окно не найдено");
     }
 }

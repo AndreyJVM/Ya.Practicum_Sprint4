@@ -14,18 +14,8 @@ import static pages.OrderPage.ORDER_BUTTON_TOP;
 @RunWith(Parameterized.class)
 public class OrderTest extends BaseTest {
 
-    @Override
-    public void startUp() {
-        super.startUp();
-        objBasicPage = new BasicPage(driver);
-        objOrderPage = new OrderPage(driver);
-        objBasicPage.waitForLoadServiceLogo();
-        objBasicPage.clickCookieButton();
-    }
-
-    private BasicPage objBasicPage;
+    private BasicPage basicPage;
     private OrderPage objOrderPage;
-
     private final String name;
     private final String lastName;
     private final String address;
@@ -35,6 +25,15 @@ public class OrderTest extends BaseTest {
     private final String period;
     private final String color;
     private final String comment;
+
+    @Override
+    public void startUp() {
+        super.startUp();
+        basicPage = new BasicPage(driver);
+        objOrderPage = new OrderPage(driver);
+        basicPage.waitForLoadServiceLogo();
+        basicPage.clickCookieButton();
+    }
 
     private final By xpathOrderButton;
 
