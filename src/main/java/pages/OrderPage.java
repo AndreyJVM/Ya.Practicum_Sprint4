@@ -1,11 +1,15 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertTrue;
+
 public class OrderPage {
+
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     //Кнопка "Заказать" в верхней части страницы
     public static final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g");
@@ -39,29 +43,27 @@ public class OrderPage {
     public static final By ORDER_BUTTON_BOTTOM = By.xpath(".//div[5]/button");
 
 
-    private WebDriver driver;
-
     public OrderPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, 8);
     }
 
     public void clickOrderButtonTop() {
-        Assert.assertTrue(driver.findElement(ORDER_BUTTON_TOP).isEnabled());
+        assertTrue(driver.findElement(ORDER_BUTTON_TOP).isEnabled());
         driver.findElement(ORDER_BUTTON_TOP).click();
     }
 
     public void clickOrderButton(By xpathButton) {
-        Assert.assertTrue(driver.findElement(xpathButton).isEnabled());
+        assertTrue(driver.findElement(xpathButton).isEnabled());
         driver.findElement(xpathButton).click();
     }
 
 
     public void waitForLoadOrderHeader() {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(ORDER_HEADER));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ORDER_HEADER));
     }
 
-    public void selectMetro(String metro) {
+    private void selectMetro(String metro) {
         driver.findElement(INPUT_METRO_STATION).sendKeys(metro);
         selectMetroFromOptions(metro);
     }
@@ -93,8 +95,7 @@ public class OrderPage {
 
     public void waitForChangedHeader() {
         String changed = driver.findElement(ORDER_HEADER).getText();
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.textToBePresentInElementLocated(ORDER_HEADER, changed));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(ORDER_HEADER, changed));
     }
 
     public void selectPeriod(String period) {
@@ -109,9 +110,7 @@ public class OrderPage {
     }
 
     public boolean isOrderCreatedStatusDisplayed() {
-        WebElement initialStatus =
-                new WebDriverWait(driver, 10)
-                        .until(ExpectedConditions.visibilityOfElementLocated(ORDER_CREATED_STATUS));
+        WebElement initialStatus = wait.until(ExpectedConditions.visibilityOfElementLocated(ORDER_CREATED_STATUS));
         return initialStatus.isDisplayed();
     }
 
@@ -126,9 +125,7 @@ public class OrderPage {
 
     public boolean isErrorTextDisplayed(String error) {
         String personalDataForm = String.format(".//div[@class='Order_Form__17u6u']//*[text()='%s']", error);
-        WebElement errorText =
-                new WebDriverWait(driver, 10)
-                        .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(personalDataForm)));
+        WebElement errorText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(personalDataForm)));
         return errorText.isDisplayed();
     }
 }
