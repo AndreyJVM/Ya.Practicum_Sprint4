@@ -10,10 +10,17 @@ public class FAQTest extends BaseTest {
 
     private final String question;
     private final String answer;
+    private BasicPage basicPage;
 
     public FAQTest(String question, String answer) {
         this.question = question;
         this.answer = answer;
+    }
+
+    @Override
+    public void startUp() {
+        super.startUp();
+        basicPage = new BasicPage(driver);
     }
 
     @Parameterized.Parameters
@@ -34,17 +41,16 @@ public class FAQTest extends BaseTest {
                                 "Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится."},
                 {"Можно ли отменить заказ?",
                         "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои."},
-                {"Я жизу за МКАДом, привезёте?", "Да, обязательно. Всем самокатов! И Москве, и Московской области."},
+                {"Я живу за МКАДом, привезёте?", "Да, обязательно. Всем самокатов! И Москве, и Московской области."},
         };
     }
 
     @Test
     public void checkQuestionShowsRightAnswer() {
-        BasicPage objBasicPage = new BasicPage(driver);
-        objBasicPage.waitForLoadServiceLogo();
-        objBasicPage.clickCookieButton();
-        objBasicPage.scrollToQuestionsList();
-        objBasicPage.clickQuestion(question);
-        objBasicPage.verifyAnswer(answer);
+        basicPage.waitForLoadServiceLogo();
+        basicPage.clickCookieButton();
+        basicPage.scrollToQuestionsList();
+        basicPage.clickQuestion(question);
+        basicPage.verifyAnswer(answer);
     }
 }
