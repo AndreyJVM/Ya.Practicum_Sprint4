@@ -3,11 +3,13 @@ package basicQATest;
 import pages.BasicPage;
 import org.junit.Test;
 
+import java.util.Locale;
+
 import static org.junit.Assert.assertEquals;
 
 public class OpenYandexBasicPageTest extends BaseTest {
 
-    private final String YANDEX_URL = "https://dzen.ru/?yredirect=true";
+    private final String YANDEX_URL = System.getProperty("ya.base.url").toLowerCase(Locale.ROOT);
 
     @Test
     public void checkClickYandexLogo_OpensYandexMainPage() {

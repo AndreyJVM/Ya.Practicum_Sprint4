@@ -54,6 +54,7 @@
                     <systemPropertyVariables>
                         <browser>${browser}</browser>
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
+                        <ya.base.url>${ya.base.url}</ya.base.url>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
