@@ -11,6 +11,13 @@ import static org.junit.Assert.assertTrue;
 public class OrderNumberTest extends BaseTest {
 
     private final String orderNumber;
+    private BasicPage basicPage;
+
+    @Override
+    public void startUp() {
+        super.startUp();
+        basicPage = new BasicPage(driver);
+    }
 
     public OrderNumberTest(String orderNumber) {
         this.orderNumber = orderNumber;
@@ -21,17 +28,20 @@ public class OrderNumberTest extends BaseTest {
         return new Object[][] {
                 {"000000"},
                 {"555-555"},
+                {""},
         };
     }
 
     @Test
     public void checkNonexistentNumber_showsError() {
-        BasicPage objBasicPage = new BasicPage(driver);
-        objBasicPage.waitForLoadServiceLogo();
-        objBasicPage.clickOrderStatusButton();
-        objBasicPage.waitForLoadOrderNumberInput();
-        objBasicPage.enterOrderNumber(orderNumber);
-        objBasicPage.clickGoButton();
-        assertTrue(objBasicPage.isImageNotFoundDisplayed());
+        basicPage.waitForLoadServiceLogo();
+
+        basicPage.clickOrderStatusButton();
+        basicPage.waitForLoadOrderNumberInput();
+
+        basicPage.enterOrderNumber(orderNumber);
+        basicPage.clickGoButton();
+
+        assertTrue(basicPage.isImageNotFoundDisplayed());
     }
 }
