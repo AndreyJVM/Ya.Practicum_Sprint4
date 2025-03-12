@@ -16,7 +16,6 @@
         <!--Dependencies-->
         <junit.version>4.13.2</junit.version>
         <selenium.version>3.141.59</selenium.version>
-        <webdriver.version>4.4.3</webdriver.version>
 
         <!--System Properties-->
         <base.url/>
@@ -33,12 +32,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdriver.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

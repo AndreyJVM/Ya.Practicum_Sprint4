@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static pages.BasicPage.BASE_URI;
+import pages.BasicPage;
 
 public class BaseTest {
 
@@ -12,10 +12,10 @@ public class BaseTest {
 
     @Before
     public void startUp() {
-        System.setProperty("chromedriver", "./src/main/java/resources/webdriver/chrome/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "./src/main/java/resources/webdriver/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get(BASE_URI);
+        driver.get(BasicPage.BASE_URI);
     }
 
     @After

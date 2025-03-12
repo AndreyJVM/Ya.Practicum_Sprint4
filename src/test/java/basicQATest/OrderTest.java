@@ -3,11 +3,11 @@ package basicQATest;
 import org.openqa.selenium.By;
 import pages.BasicPage;
 import pages.OrderPage;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import static org.junit.Assert.assertTrue;
 import static pages.OrderPage.ORDER_BUTTON_BOTTOM;
 import static pages.OrderPage.ORDER_BUTTON_TOP;
 
@@ -64,6 +64,6 @@ public class OrderTest extends BaseTest {
     @Test
     public void checkSuccessfulOrderTopButtonAndBottom() {
         objOrderPage.setOrderDetails(name, lastName, address, metro, phoneNumber, date, period, color, comment, xpathOrderButton);
-        Assert.assertTrue(objOrderPage.isOrderCreatedStatusDisplayed());
+        assertTrue(objOrderPage.isOrderCreatedStatusDisplayed());
     }
 }

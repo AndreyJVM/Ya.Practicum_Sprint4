@@ -10,9 +10,9 @@ public class OpenYandexBasicPageTest extends BaseTest {
 
     @Test
     public void checkClickYandexLogo_OpensYandexMainPage() {
-        BasicPage objBasicPage = new BasicPage(driver);
-        objBasicPage.waitForLoadServiceLogo();
-        objBasicPage.clickYandexLogo();
+        BasicPage basicPage = new BasicPage(driver);
+        basicPage.waitForLoadServiceLogo();
+        basicPage.clickYandexLogo();
 
         String currentUrl = driver.getCurrentUrl();
         assertEquals(YANDEX_URL, currentUrl);

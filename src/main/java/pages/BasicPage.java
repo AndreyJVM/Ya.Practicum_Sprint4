@@ -69,7 +69,7 @@ public class BasicPage {
         driver.findElement(SERVICE_LOGO).click();
     }
 
-    public boolean IsHomeHeaderDisplayed() {
+    public boolean isHomeHeaderDisplayed() {
         WebElement homeHeader =
                 new WebDriverWait(driver, 10)
                         .until(ExpectedConditions.visibilityOfElementLocated(HOME_HEADER));
