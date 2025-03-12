@@ -23,9 +23,9 @@ public class FAQTest extends BaseTest {
         basicPage = new BasicPage(driver);
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "question: {0}; answer: {1}")
     public static Object[][] getQuestionAnswerText() {
-        return new Object[][] {
+        return new Object[][]{
                 {"Сколько это стоит? И как оплатить?", "Сутки — 400 рублей. Оплата курьеру — наличными или картой."},
                 {"Хочу сразу несколько самокатов! Так можно?",
                         "Пока что у нас так: один заказ — один самокат. " + "Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."},

@@ -1,10 +1,11 @@
 package basicQATest;
 
 import pages.BasicPage;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class OrderNumberTest extends BaseTest {
@@ -15,7 +16,7 @@ public class OrderNumberTest extends BaseTest {
         this.orderNumber = orderNumber;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "orderNumber: {0}")
     public static Object[][] getOrderNumber() {
         return new Object[][] {
                 {"000000"},
@@ -31,6 +32,6 @@ public class OrderNumberTest extends BaseTest {
         objBasicPage.waitForLoadOrderNumberInput();
         objBasicPage.enterOrderNumber(orderNumber);
         objBasicPage.clickGoButton();
-        Assert.assertTrue(objBasicPage.isImageNotFoundDisplayed());
+        assertTrue(objBasicPage.isImageNotFoundDisplayed());
     }
 }
